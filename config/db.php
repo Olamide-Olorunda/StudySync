@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'study_group_finder';
 $username = 'root';
-$password = '';
+$password = 'password';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

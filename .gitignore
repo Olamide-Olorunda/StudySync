@@ -1,0 +1,7 @@
+node_modules/
+config/db.php
+.DS_Store
+*.log
+*.cache
+*.swp
+*.swo
