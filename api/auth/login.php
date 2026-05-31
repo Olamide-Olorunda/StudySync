@@ -27,6 +27,7 @@ if (!$user || !password_verify($password, $user['password'])) {
 session_regenerate_id(true);
 $_SESSION['user_id'] = (int) $user['id'];
 $_SESSION['user_name'] = $user['name'];
+$_SESSION['user_email'] = $user['email'];
 
 json_response([
     'user' => [
