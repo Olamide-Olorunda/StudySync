@@ -1,20 +1,15 @@
 {
-  "name": "study_group_finder",
+  "name": "study-group-finder",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-        "start": "node js/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Olamide-Olorunda/study-group-finder.git"
+    "client:install": "npm --prefix frontend install",
+    "client:dev": "npm --prefix frontend run dev",
+    "client:build": "npm --prefix frontend run build",
+    "client:preview": "npm --prefix frontend run preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Olamide-Olorunda/study-group-finder/issues"
-  },
-  "homepage": "https://github.com/Olamide-Olorunda/study-group-finder#readme",
   "description": ""
 }
