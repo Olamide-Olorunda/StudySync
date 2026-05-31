@@ -1,6 +1,12 @@
 <?php
 
-require_once __DIR__ . '/config/bootstrap.php';
+declare(strict_types=1);
+
+require_once __DIR__ . '/../_helpers.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    json_error('Method not allowed', 405);
+}
 
 $_SESSION = [];
 
@@ -11,5 +17,4 @@ if (ini_get('session.use_cookies')) {
 
 session_destroy();
 
-header('Location: /');
-exit;
+json_response(['message' => 'Logged out.']);
