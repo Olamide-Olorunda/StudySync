@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import AuthProvider from './context/AuthProvider';
+import { useAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
 import GroupDetails from './pages/GroupDetails';
 import Groups from './pages/Groups';

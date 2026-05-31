@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getGroupDetails, joinGroup, leaveGroup } from '../api/client';
 
@@ -9,7 +9,7 @@ const GroupDetails = () => {
   const [isMember, setIsMember] = useState(false);
   const [status, setStatus] = useState({ loading: true, error: '', message: '' });
 
-  const fetchDetails = async () => {
+  const fetchDetails = useCallback(async () => {
     setStatus((prev) => ({ ...prev, loading: true, error: '' }));
     try {
       const data = await getGroupDetails(groupId);
@@ -21,18 +21,18 @@ const GroupDetails = () => {
     } finally {
       setStatus((prev) => ({ ...prev, loading: false }));
     }
-  };
+  }, [groupId]);
 
   useEffect(() => {
     fetchDetails();
-  }, [groupId]);
+  }, [fetchDetails]);
 
   const handleJoin = async () => {
     setStatus((prev) => ({ ...prev, message: '', error: '' }));
     try {
       const data = await joinGroup(groupId);
       setStatus((prev) => ({ ...prev, message: data.message || 'Joined group.' }));
-      fetchDetails();
+      await fetchDetails();
     } catch (err) {
       setStatus((prev) => ({ ...prev, error: err.message }));
     }
@@ -46,7 +46,7 @@ const GroupDetails = () => {
     try {
       const data = await leaveGroup(groupId);
       setStatus((prev) => ({ ...prev, message: data.message || 'Left group.' }));
-      fetchDetails();
+      await fetchDetails();
     } catch (err) {
       setStatus((prev) => ({ ...prev, error: err.message }));
     }
